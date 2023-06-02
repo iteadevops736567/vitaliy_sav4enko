@@ -1,5 +1,5 @@
 1. створити декілька віртуальних серверів в EC2;
-![.](https://github.com/iteadevops736567/vitaliy_sav4enko/M6/1.jpg)
+![.](https://github.com/iteadevops736567/vitaliy_sav4enko/blob/master/M6/1.jpg)
 
 2. створити security group де буде назовні доступний порт 22, 80, 443, 3000;
 
