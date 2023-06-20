@@ -1,0 +1,26 @@
+# NGINX Ingress Controller
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.3/deploy/static/provider/baremetal/deploy.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hosts
+  annotations:
+spec:
+  rules:
+    - host: example.me
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: frontend
+              port:
+                number: 80
+        - path: /backend
+          pathType: Prefix
+          backend:
+            service:
+              name: backend
+              port:
+                number: 3000
