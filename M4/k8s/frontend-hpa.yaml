@@ -1,0 +1,20 @@
+apiVersion: autoscalling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+    name: frontend-autoscaling
+    spec:
+        scaleTargetRef:
+            apiVersion: apps/v2beta1
+            kind: Deployment
+            name: frontend
+        minReplicas: 1
+        maxReplicas: 3
+        metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            targetAveregeUtilization: 75
+        - type: Resource
+          resource:
+            name: memory
+            targetAveregeUtilization: 75
