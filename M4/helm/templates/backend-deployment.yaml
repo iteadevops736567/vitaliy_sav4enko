@@ -22,8 +22,20 @@ spec:
         # The container name to execute pods
         - name: backend
           # pull postgresimage from docker hub
-          image: maxcxam/itea_backend
+          image: sav44enko/backend:latest
           ports:
             # Assign ports to expose container
-            - containerPort: 5432
             - containerPort: 3000
+          env:
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "password"
+            - name: POSTGRES_DB
+              value: "mydb"
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: "mydb"
+            - name: PGHOST
+              value:  "db-service"

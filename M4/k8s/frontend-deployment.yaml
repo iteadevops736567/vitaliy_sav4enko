@@ -22,8 +22,7 @@ spec:
         # The container name to execute pods
         - name: frontend
           # pull postgresimage from docker hub
-          image: maxcxam/itea_frontend
+          image: sav44enko/frontend:latest
           ports:
             # Assign ports to expose container
-            - containerPort: 8080
-            - containerPort: 3000
+            - containerPort: 80

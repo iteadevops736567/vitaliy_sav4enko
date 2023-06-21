@@ -12,6 +12,6 @@ spec:
   ports:
     # The port number to expose the service
     - port: 5432
-  # Pod to route service traffic
+  # Pod to route service traffic  
   selector:
     app: postgresdb

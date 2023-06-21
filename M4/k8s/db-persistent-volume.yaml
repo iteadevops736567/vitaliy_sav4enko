@@ -16,6 +16,6 @@ spec:
   # A db can write and read from volumes to multiple pods
   accessModes:
     - ReadWriteMany
-  # Specify the path to persistent the volumes
+  # Specify the path to persistent the volumes  
   hostPath:
     path: "/data/db"
