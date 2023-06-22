@@ -3,17 +3,17 @@ apiVersion: v1
 kind: Service
 metadata:
   # Name your service
-  name: backend-service
+  name: {{ .Values.backend_service.name }}-service
   labels:
-    app: backend
+    app: {{ .Values.backend.name }}
 spec:
   # Choose how to expose your service
   ports:
     # The port number to expose the service
-    - port: 3000
-      targetPort: 3000
+    - port: {{ .Values.backend_service.port }}
+      targetPort: {{ .Values.backend_service.targetPort }}
       protocol: TCP
-      name: backend-port
+      name: {{ .Values.backend_service.name }}-port
   # Pod to route service traffic  
   selector:
-    app: backend
+    app: {{ .Values.backend.name }}

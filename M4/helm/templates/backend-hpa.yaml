@@ -1,20 +1,22 @@
+{{- if .Values.autoscaling.enabled }}
 apiVersion: autoscalling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-    name: backend-autoscaling
+    name: {{ .Values.backend.name }}-autoscaling
     spec:
         scaleTargetRef:
             apiVersion: apps/v2beta1
             kind: Deployment
-            name: backend
-        minReplicas: 1
-        maxReplicas: 3
+            name: {{ .Values.backend.name }}
+        minReplicas: {{ .Values.autoscaling.minReplicas }}
+        maxReplicas: {{ .Values.autoscaling.maxReplicas }}
         metrics:
         - type: Resource
           resource:
             name: cpu
-            targetAveregeUtilization: 75
+            targetAveregeUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
         - type: Resource
           resource:
             name: memory
-            targetAveregeUtilization: 75
+            targetAveregeUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
+{{- end }}

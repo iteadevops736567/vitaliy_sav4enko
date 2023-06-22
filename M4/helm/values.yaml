@@ -1,0 +1,62 @@
+# Default values for example.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+frontend:
+    replicaCount: 1
+    name: frontend
+    image:
+        repository: sav44enko/frontend:latest
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        #tag: ""
+    port: 80
+
+backend:
+    replicaCount: 1
+    name: backend
+    image:
+        repository: sav44enko/backend:latest
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        #tag: ""
+    port: 3000
+
+database:
+    replicaCount: 1
+    name: postgresdb
+    image:
+        repository: postgres
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        #tag: ""
+    port: 5432
+
+frontend_service:
+    name: frontend
+    #type: ClusterIP
+    port: 80
+    targetPort: 80
+
+backend_service:
+    name: backend
+    #type: ClusterIP
+    port: 3000
+    targetPort: 3000
+
+database_service:
+    name: postgresdb
+    #type: ClusterIP
+    port: 5432
+
+ingress:
+    name: ingress
+    enabled: true
+    domain: example.me 
+
+autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
